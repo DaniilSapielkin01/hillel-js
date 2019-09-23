@@ -1,21 +1,22 @@
 // //--- Функции ---
 // //---#1
-// let a = +prompt("#1");
-// let b = +prompt("#2");
-
-// function max() {
-//   let c = Math.max(a, b);
-//   console.log(c);
+// function max(a, b) {
+//   return Math.max(a, b);
 // }
-// max();
+// console.log(max(0, 1));
 
 // //---#2
-let a = prompt("number");
-let b = prompt("number");
-let c = a.concat(b);
-function func() {}
-console.log(c);
-
+// let b = [0, -1, 100, 500, 100500];
+// function min(obj) {
+//   let a = obj[0];
+//   for (let i = 1; i < obj.length; i++) {
+//     if (obj[i] < a) {
+//       a = obj[i];
+//     }
+//   }
+//   console.log(a);
+// }
+// min(b);
 // // ---#3
 
 // let users = [
@@ -107,26 +108,77 @@ console.log(c);
 // }
 
 // //---#6
-// let user = { firstname: "Tom", age: 10 };
 
-// let s = [
-//   { firstname: "John" },
-//   { lastname: "Doe" },
-//   { job: "front-end" },
-//   { from: "Ukraine" }
-// ];
+// var source = { firstname: "Tom", age: 10 };
+// var s = extend(source, { firstname: "John" }, { lastname: "Doe" });
 
-// function func() {}
-// //---#7
-// let date = new Date(prompt("Date yy-mm-dd"));
-// let message = prompt("messege");
-// let author = prompt("Author");
+// console.log(source); // {firstname: 'John', age: 10, lastname: 'Doe'}
+// console.log(s); // {firstname: 'John', age: 10, lastname: 'Doe'}
+
+//---#7
+
+// let date = new Date(prompt("Date yyyy-mm-dd", ""));
+// let nowDate = date.getDate();
+// let dateMonth = date.getMonth() + 1;
+// let dateYear = date.getFullYear();
+// let allDate = dateYear + "-" + dateMonth + "-" + nowDate;
+// date = allDate;
+
+// let message = prompt("messege", "");
+// let author = "Anonymous";
 
 // function setComment(date, message, author) {
-//   if (date  && message ) {
-//     console.log("work");
-//   } else if () {
-//     console.log("not work");
+//   if (date && message) {
+//     author = prompt("Author");
+//     if (author) {
+//     } else {
+//       author = "Anonymous";
+//     }
+//     console.log(
+//       author,
+//       date,
+//       `
+//     ` + message
+//     );
+//   } else {
+//     alert("not work");
 //   }
 // }
 // setComment(date, message, author);
+//Замыкание
+// ---#8
+// function createTimer() {
+//   for (i = 0; i < 1002; i++) {
+//     console.log(i);
+//   }
+//   let perfom = performance.now();
+//   return function time() {
+//     console.log(perfom);
+//   };
+// }
+
+//вроду и работает,но похоже что не так работать должно / из-за нижнего undefined.
+
+// var timer = createTimer();
+// console.log("!"); // код, время выполнения которого нужно измерить
+// console.log(timer());
+// // время в  мкс от начала выполнения createTimer() до момента вызова timer()
+
+// ---#9
+
+// function createAdder() {
+//   alert(hello + "John");
+//   alert(hello + "Harry");
+//   function getFullName() {
+//     return
+//   }
+// }
+
+// var hello = createAdder("Hello, ");
+// alert(hello("John")); // Hello, John
+// alert(hello("Harry")); // Hello, Harry
+
+// // var plus = createAdder(5);
+// // alert(plus(1)); // 6
+// // alert(plus(5)); // 10
+// createAdder();
