@@ -23,65 +23,66 @@
 
 // // ---#3
 
-// let users = [
-//   {
-//     firstName: "Igor",
-//     lastName: "Rogi",
-//     age: 18
-//   },
-//   {
-//     firstName: "Denis",
-//     lastName: "Sined",
-//     age: 29
-//   },
-//   {
-//     firstName: "Georg",
-//     lastName: "Groeg",
-//     age: 45
-//   },
-//   {
-//     firstName: "Dima",
-//     lastName: "Amid",
-//     age: 14
-//   },
-//   {
-//     firstName: "Klerk",
-//     lastName: "Krelk",
-//     age: 19
-//   },
-//   {
-//     firstName: "Katy",
-//     lastName: "Parry",
-//     age: 20
-//   },
-//   {
-//     firstName: "Inna",
-//     lastName: "Anni",
-//     age: 16
-//   },
-//   {
-//     firstName: "Felix",
-//     lastName: "Xilef",
-//     age: 18
-//   },
-//   {
-//     firstName: "Vladimir",
-//     lastName: "Rimidal",
-//     age: 14
-//   }
-// ];
-// function newUser() {
-//   let filterUsers;
-//   filterUsers = users.filter(function({ age }) {
-//     return age >= 18;
-//   });
-//   filterUsers.forEach(function(item, i, filterUsers) {
-//     item.fullName = item.firstName + " " + item.lastName;
-
-//     console.log(item);
-//   });
-// }
-// newUser();
+let users = [
+  {
+    firstName: "Igor",
+    lastName: "Rogi",
+    age: 18
+  },
+  {
+    firstName: "Denis",
+    lastName: "Sined",
+    age: 29
+  },
+  {
+    firstName: "Georg",
+    lastName: "Groeg",
+    age: 45
+  },
+  {
+    firstName: "Dima",
+    lastName: "Amid",
+    age: 14
+  },
+  {
+    firstName: "Klerk",
+    lastName: "Krelk",
+    age: 19
+  },
+  {
+    firstName: "Katy",
+    lastName: "Parry",
+    age: 20
+  },
+  {
+    firstName: "Inna",
+    lastName: "Anni",
+    age: 16
+  },
+  {
+    firstName: "Felix",
+    lastName: "Xilef",
+    age: 18
+  },
+  {
+    firstName: "Vladimir",
+    lastName: "Rimidal",
+    age: 14
+  }
+];
+function newUser() {
+  let filterUsers;
+  filterUsers = users.filter(function({ age }) {
+    return age >= 18;
+  });
+  filterUsers.forEach(function(item, i, filterUsers) {
+    var ourput = [];
+    item.fullName = item.firstName + " " + item.lastName;
+    ourput = item.fullName;
+    console.log(ourput);
+  });
+}
+newUser();
 
 //---#4
 // let mus = [1, 2, 3, 4];
@@ -108,15 +109,13 @@
 // func();
 
 //---#6
-function func () {
- 
-}
+// function func () {
 
-
-var source = { firstname: "Tom", age: 10 };
-var s = extend(source, { firstname: "John" }, { lastname: "Doe" });
-console.log(source); // {firstname: 'John', age: 10, lastname: 'Doe'}
-console.log(s); // {firstname: 'John', age: 10, lastname: 'Doe'}
+// }
+// var source = { firstname: "Tom", age: 10 };
+// var s = extend(source, { firstname: "John" }, { lastname: "Doe" });
+// console.log(source); // {firstname: 'John', age: 10, lastname: 'Doe'}
+// console.log(s); // {firstname: 'John', age: 10, lastname: 'Doe'}
 
 //---#7
 //Date list
