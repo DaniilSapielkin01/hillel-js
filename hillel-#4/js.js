@@ -108,8 +108,15 @@
 // func();
 
 //---#6
+function func () {
+ 
+}
 
-//Object.assign()
+
+var source = { firstname: "Tom", age: 10 };
+var s = extend(source, { firstname: "John" }, { lastname: "Doe" });
+console.log(source); // {firstname: 'John', age: 10, lastname: 'Doe'}
+console.log(s); // {firstname: 'John', age: 10, lastname: 'Doe'}
 
 //---#7
 //Date list
