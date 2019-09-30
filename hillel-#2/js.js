@@ -163,15 +163,33 @@
 
 //---#12
 
-// let lang = ["ru", "en"];
-// let day = [0, 1, 2, 3, 4, 5, 6];
-// let result = "";
+// let lang = prompt("ru , en or de ? ", "ru");
+// let greeting = "";
 
-// if(lang == "ru") {
+// if (lang == "ru") {
+//   greeting = " Привет";
+// } else if (lang == "en") {
+//   greeting = " Hello";
+// } else if (lang == "de") {
+//   greeting = "Guten morgen";
+// }
 
-// }?????
+// switch (lang) {
+//   case "ru":
+//     greeting = " Привет";
+//     break;
+//   case "en":
+//     greeting = " Hello";
+//     break;
+//   case "de":
+//     greeting = "Guten morgen";
+//     break;
+// }
+
+// console.log(greeting);
 
 //ЦЫКЛЫ
+
 //---#13
 // str = "";
 // for (let i = 0; i <= 4; i++) {
@@ -181,8 +199,9 @@
 
 //---#14
 // let step;
-// for (step = 0; step <= 21; step++) {
+// for (step = 1; step <= 21; step++) {
 //   if (step % 2 == 0) {
+//     step *= step;
 //     console.log(step);
 //   }
 // }
@@ -198,18 +217,16 @@
 //   console.log(i + ": Happy birthday to you");
 // }
 // }
-
 //---#16
-// let user = confirm("Вы - админ ?");
 
-// for (i = 0; i < 10; i++) {
-//   if (i == 5 && user == false) {
-//     continue;
-//   } else if (user == true) {
-//     console.log("Не продолжается ");
+// for (;;) {
+//   let conf = confirm("GO");
+//   if (conf == false) {
+//     console.log("exit");
 //     break;
+//   } else if (conf == true) {
+//     console.log("GO too");
 //   }
-//   console.log(i + ": Продолжаетсья ");
 // }
 
 //---#17
@@ -225,43 +242,68 @@
 // console.log(n);
 
 // //---#18
-
-// let a = 1;
-// let b = "";
-
-// while (a < 10) {
-//   b += a + " x 2 = " + a * 2 + "<br>";
-//   a++;
+// let sum  ;
+// for (let j = 1; j <= 10; j++) {
+//   for (let i = 1; i <= 10; i++) {
+//     sum = j + "x" + i + " = " + j * i;
+//     console.log(sum);
+//   }
 // }
-// document.write(b);
-
-// let c = 1;
-// let d = "";
-// for (d = 0; d < 10; i++) {
-//   b += d + " x 2 = " + c * 2 + "<br>";
-// }
-// document.write(d);
 
 //---#19
-//Без тело не получаеться(
-// let n = 20;
-// let fib = [0, 1];
 
-// for (i = 2; i < n; i++) {
-//   fib[i] = fib[i - 1] + fib[i - 2];
+// let n = 30;
+// let prev = 0;
+// let next = 1;
+// let stup;
+// var fib = [0, 1];
+
+// for (
+//   i = 0;
+//   i < n;
+//   i++,  stup = next, next = prev + next, prev = stup, console.log(prev)
+// ) {}
+
+//---#20 => 9е задание в циклах
+// let value;
+// let numbers = [];
+// let total = 0;
+// do {
+//   value = prompt(`Введите число`, "");
+//   if (value == +value && value.trim()) {
+//     numbers.push(+value);
+//   } else if (value !== null) alert("Было введено не число, попробуйте еще раз");
+// } while (value !== null);
+// for (const value of numbers) {
+//   total = total + value;
 // }
-// console.log(fib);
-
-//---#20
+// alert(`Общая сумма ${numbers.length} чисел равна ${total}`);
+//---#21
 
 // let password = prompt("Введите пароль . ");
 // let password2 = "qwerty12";
 
-// if (password == "qwerty12") {
-//   alert("Вы успешно авторизованы");
-// } else if (password !== password2) {
-//   alert("Введите еще раз пароль");
+// if (password == password2) {
+//   alert("Hello Admin");
+// } else if (password !== password2 || password == "") {
+//   alert("Password is not correct ");
 //   location.reload();
 // } else if (password == null) {
-//   alert("Aвторизация прервалась");
+//   let conf = confirm("Are you shure ?");
+//   if (conf == true) {
+//     alert(" Good bay");
+//   } else if (conf == false) {
+//     location.reload();
+//   }
+// }
+//---#22
+
+// for (i = 1; i <= 50; ++i) {
+//   if (!(i % 3)) {
+//     console.log("Fizz");
+//   } else if (!(i % 5)) {
+//     console.log("Buzz");
+//   } else if (i % 5 && i % 3) {
+//     console.log("FizzBuzz");
+//   }
 // }
