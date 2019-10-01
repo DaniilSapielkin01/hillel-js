@@ -23,66 +23,67 @@
 
 // // ---#3
 
-let users = [
-  {
-    firstName: "Igor",
-    lastName: "Rogi",
-    age: 18
-  },
-  {
-    firstName: "Denis",
-    lastName: "Sined",
-    age: 29
-  },
-  {
-    firstName: "Georg",
-    lastName: "Groeg",
-    age: 45
-  },
-  {
-    firstName: "Dima",
-    lastName: "Amid",
-    age: 14
-  },
-  {
-    firstName: "Klerk",
-    lastName: "Krelk",
-    age: 19
-  },
-  {
-    firstName: "Katy",
-    lastName: "Parry",
-    age: 20
-  },
-  {
-    firstName: "Inna",
-    lastName: "Anni",
-    age: 16
-  },
-  {
-    firstName: "Felix",
-    lastName: "Xilef",
-    age: 18
-  },
-  {
-    firstName: "Vladimir",
-    lastName: "Rimidal",
-    age: 14
-  }
-];
-function newUser() {
-  let filterUsers;
-  filterUsers = users.filter(function({ age }) {
-    return age >= 18;
-  });
-  filterUsers.forEach(function(item, i, filterUsers) {
-    var ourput = [];
-    item.fullName = item.firstName + " " + item.lastName;
-    ourput = item.fullName;
-    console.log(ourput);
-  });
-}
-newUser();
+// let users = [
+//   {
+//     firstName: "Igor",
+//     lastName: "Rogi",
+//     age: 18
+//   },
+//   {
+//     firstName: "Denis",
+//     lastName: "Sined",
+//     age: 29
+//   },
+//   {
+//     firstName: "Georg",
+//     lastName: "Groeg",
+//     age: 45
+//   },
+//   {
+//     firstName: "Dima",
+//     lastName: "Amid",
+//     age: 14
+//   },
+//   {
+//     firstName: "Klerk",
+//     lastName: "Krelk",
+//     age: 19
+//   },
+//   {
+//     firstName: "Katy",
+//     lastName: "Parry",
+//     age: 20
+//   },
+//   {
+//     firstName: "Inna",
+//     lastName: "Anni",
+//     age: 16
+//   },
+//   {
+//     firstName: "Felix",
+//     lastName: "Xilef",
+//     age: 18
+//   },
+//   {
+//     firstName: "Vladimir",
+//     lastName: "Rimidal",
+//     age: 14
+//   }
+// ];
+// function newUser() {
+//   let filterUsers;
+//   filterUsers = users.filter(function({ age }) {
+//     return age >= 18;
+//   });
+//   filterUsers.forEach(function(item, i, filterUsers) {
+//     fullName = item.firstName + " " + item.lastName;
+//     var map = new Map();
+//     map.set("fullName",fullName);
+//     console.log(...map);
+//   });
+// }
+
+// newUser();
 
 //---#4
 // let mus = [1, 2, 3, 4];
@@ -109,11 +110,18 @@ newUser();
 // func();
 
 //---#6
-// function func () {
 
+// function extend(obj, ...mus) {
+//   for (let i = 0; i < mus.length; i++) {
+//     for (let key in mus[i]) {
+//       obj[key] = mus[i][key];
+//     }
+//   }
+//   return obj;
 // }
 // var source = { firstname: "Tom", age: 10 };
 // var s = extend(source, { firstname: "John" }, { lastname: "Doe" });
+
 // console.log(source); // {firstname: 'John', age: 10, lastname: 'Doe'}
 // console.log(s); // {firstname: 'John', age: 10, lastname: 'Doe'}
 
@@ -151,27 +159,22 @@ newUser();
 // Замыкание
 //---#8
 // function createTimer() {
-//   for (i = 0; i < 100; i++) {
-//     console.log(i + "  !");
-//   }
-//   return function timer() {
-//     createTimer = performance.now();
-//     console.log(createTimer);
+//   var one = performance.now();
+//   return function() {
+//     var second = performance.now();
+//     return second - one;
 //   };
 // }
 
 // var timer = createTimer();
-// console.log("!"); // код, время выполнения которого нужно измерить
-// // Тут  undefined на 159 строке не понятно почему
-// console.log(timer());
-// время в мкс от начала выполнения createTimer() до момента вызова timer()
+// alert("!"); // код, время выполнения которого нужно измерить
+// alert(timer()); // время в мкс от начала выполнения createTimer() до момента вызова timer()
+
 //---#9
-// function createAdder(name) {
-//   console.log(name + hello + " <=");
-
-//   return function hello(nam) {
-
-//   }
+// function createAdder(hello) {
+//   return function(value) {
+//     return hello + value;
+//   };
 // }
 
 // var hello = createAdder("Hello, ");
