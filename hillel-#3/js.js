@@ -103,21 +103,21 @@
 
 //---#8
 
-// let numbers = [];
-// let total = 0;
-// let userInput;
+let numbers = [];
+let total = 0;
+let userInput;
 
-// do {
-//   userInput = prompt("Введите число", "");
-//   if (userInput === "" || isNaN(userInput)) {
-//     alert("Было введено не число, попробуйте еще раз");
-//   }
-//   numbers.push(Number(userInput));
-// } while (userInput !== null);
-// for (let value of numbers) {
-//   total = total + value;
-// }
-// alert("Сумма равно = " + total);
+do {
+  userInput = prompt("Введите число", "");
+  if (userInput === "" || isNaN(userInput)) {
+    alert("Было введено не число, попробуйте еще раз");
+  }
+  numbers.push(Number(userInput));
+} while (userInput !== null);
+for (let value of numbers) {
+  total = total + value;
+}
+alert("Сумма равно = " + total);
 
 //---#9
 // let mas = [];

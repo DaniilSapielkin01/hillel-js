@@ -96,7 +96,6 @@
 // format.apply(country, [name, ""]); // [Ukraine]
 // format.call(country.capital, name, ""); // Kyiv
 // format.apply(country.capital, [name, ""]); // Kyiv
-// ---!!!
 // format.apply(null); // undefined ?????
 
 //---#6
