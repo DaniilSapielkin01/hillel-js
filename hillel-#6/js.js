@@ -64,6 +64,8 @@ function Rect(x, y, w, h, color) {
   this.color = color;
 
   this.draw = function(ctx) {
+    ctx.globalAlpha = 0.2;
+
     ctx.beginPath();
     ctx.rect(x, y, w, h);
     ctx.fillStyle = this.color;
@@ -77,7 +79,6 @@ function Rect(x, y, w, h, color) {
 
     ctx.beginPath();
     ctx.rect(x, y, w, h);
-    ctx.globalAlpha = 0.2;
     ctx.fillStyle = this.color;
     ctx.fill();
   };
