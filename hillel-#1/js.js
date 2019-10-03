@@ -77,7 +77,7 @@
 let str = prompt("Запишите: Мне нравится изучать Front-end ");
 let str2 = prompt("Что вам нравиться изучать?");
 
-let rusult = [];
+let rusult = "";
 
 if (str2 == null || str2 == "") {
   alert("Попробуйте еще!");
@@ -86,8 +86,9 @@ if (str2 == null || str2 == "") {
   if (str2.includes("Front-end")) {
     str = str.split(" ");
     let newStr = str.slice(0, 3);
-    result = newStr + " " + str2;
-    console.log(newStr);
+    result = newStr + str2;
+    result.join(" ");
+    console.log(result);
   } else console.log("not work");
 }
 alert(result);

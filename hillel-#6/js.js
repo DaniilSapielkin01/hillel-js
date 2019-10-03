@@ -32,12 +32,13 @@ function Line(x1, y1, x2, y2, color) {
   };
 }
 // - - - Circle - - -
-function Circle(x, y, r, color) {
+function Circle(x, y, r, color, alpha) {
   Figure(this, x, y, r, color);
   this.x = x;
   this.y = y;
   this.r = r;
   this.color = color;
+  this.alpha = alpha;
 
   this.draw = function(ctx) {
     ctx.beginPath();
@@ -121,11 +122,15 @@ function Canvas() {
     }
   };
 }
+function fix() {
+  if (s) {
+  }
+}
 // - - -  - - -
 var line = new Line(100, 300, 250, 250, "#dcdcdc"); // x1, y1, x2, y2, color
 var line2 = new Line(110, 310, 260, 260, "#dcdcdc");
 
-var circle = new Circle(120, 120, 50, "#CFEAFF"); // x, y, r, color
+var circle = new Circle(120, 120, 50, "#CFEAFF", 0.5); // x, y, r, color
 var circle2 = new Circle(150, 187, 66, "#CFEAFF");
 
 var rect = new Rect(350, 180, 60, 120, "#cfffe2"); // x, y, w, h, color280, 115, 120, 50
