@@ -83,9 +83,37 @@ function Rect(x, y, w, h, color) {
     ctx.fill();
   };
 }
-function Canvas() {
+var Zigzag = function() {
   var canvas = document.getElementById("canvasID");
   var ctx = canvas.getContext("2d");
+
+  var startX = 0;
+  var startY = 0;
+  var zigzagSpacing = 10;
+
+  ctx.lineWidth = 1;
+  ctx.globalAlpha = 0.2;
+  ctx.strokeStyle = "red";
+
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+
+  for (var n = 0; n < 600; n++) {
+    var x = startX + (n + 1) * zigzagSpacing;
+    var y;
+    if (n % 2 == 0) {
+      y = 10;
+    } else {
+      y = startY;
+    }
+    ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+};
+
+function Canvas() {
+  var canvas = document.getElementById("canvasID"),
+    ctx = canvas.getContext("2d");
 
   this.add = function(...value) {
     for (let i = 0; i < value.length; i++) {
@@ -93,10 +121,9 @@ function Canvas() {
     }
   };
 }
-
-//- - -  - - -
-var line = new Line(100, 300, 250, 250, "grey"); // x1, y1, x2, y2, color
-var line2 = new Line(110, 310, 260, 260, "grey");
+// - - -  - - -
+var line = new Line(100, 300, 250, 250, "#dcdcdc"); // x1, y1, x2, y2, color
+var line2 = new Line(110, 310, 260, 260, "#dcdcdc");
 
 var circle = new Circle(120, 120, 50, "#CFEAFF"); // x, y, r, color
 var circle2 = new Circle(150, 187, 66, "#CFEAFF");
@@ -106,6 +133,7 @@ var rect2 = new Rect(370, 165, 120, 50, " #EBCDE8");
 var rect3 = new Rect(470, 193, 65, 50, "#fbf7bd");
 
 var drawArea = new Canvas("canvasID");
-drawArea.add(line);
+drawArea.add(line, line2);
 
-drawArea.add(line2, circle, circle2, rect, rect2, rect3);
+drawArea.add(circle, circle2, rect, rect2, rect3);
+Zigzag();
