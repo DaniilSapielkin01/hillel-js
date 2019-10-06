@@ -19,14 +19,8 @@ function Line(x1, y1, x2, y2, color) {
 
   this.draw = function(ctx) {
     ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.strokeStyle = this.color;
-    ctx.stroke();
-    //---line_too
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
+    ctx.moveTo(this.x1, this.y1);
+    ctx.lineTo(this.x2, this.y2);
     ctx.strokeStyle = this.color;
     ctx.stroke();
   };
@@ -42,14 +36,8 @@ function Circle(x, y, r, color, alpha) {
 
   this.draw = function(ctx) {
     ctx.beginPath();
-    ctx.arc(x, y, r, 0, 2 * Math.PI);
-    ctx.globalAlpha = 0.5;
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    //---circle_too
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, 2 * Math.PI);
-    ctx.globalAlpha = 0.5;
+    ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    ctx.globalAlpha = this.alpha;
     ctx.fillStyle = this.color;
     ctx.fill();
   };
@@ -57,44 +45,31 @@ function Circle(x, y, r, color, alpha) {
 
 // - - - Rect - - -
 function Rect(x, y, w, h, color) {
-  Figure.call(this, x, y, w, h, color);
+  Figure.call(this, x, y, w, h, color, alpha);
   this.x = x;
   this.y = y;
   this.w = w;
   this.h = h;
   this.color = color;
+  this.alpha = alpha;
 
   this.draw = function(ctx) {
-    ctx.globalAlpha = 0.2;
-
+    ctx.globalAlpha = this.alpha;
     ctx.beginPath();
-    ctx.rect(x, y, w, h);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    ctx.rectAlpha = 0.5;
-
-    ctx.beginPath();
-    ctx.rect(x, y, w, h);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.rect(x, y, w, h);
+    ctx.rect(this.x, this.y, this.w, this.h);
     ctx.fillStyle = this.color;
     ctx.fill();
   };
 }
-var Zigzag = function() {
+var Zigzag = function(startX, startY, zigzagSpacing, color) {
   var canvas = document.getElementById("canvasID");
   var ctx = canvas.getContext("2d");
 
-  var startX = 0;
-  var startY = 0;
-  var zigzagSpacing = 10;
-
-  ctx.lineWidth = 1;
-  ctx.globalAlpha = 0.2;
-  ctx.strokeStyle = "red";
+  this.startX = startX;
+  this.startY = startY;
+  this.zigzagSpacing = zigzagSpacing;
+  this.color = color;
+  ctx.strokeStyle = this.color;
 
   ctx.beginPath();
   ctx.moveTo(startX, startY);
@@ -122,10 +97,6 @@ function Canvas() {
     }
   };
 }
-function fix() {
-  if (s) {
-  }
-}
 // - - -  - - -
 var line = new Line(100, 300, 250, 250, "#dcdcdc"); // x1, y1, x2, y2, color
 var line2 = new Line(110, 310, 260, 260, "#dcdcdc");
@@ -133,12 +104,10 @@ var line2 = new Line(110, 310, 260, 260, "#dcdcdc");
 var circle = new Circle(120, 120, 50, "#CFEAFF", 0.5); // x, y, r, color
 var circle2 = new Circle(150, 187, 66, "#CFEAFF");
 
-var rect = new Rect(350, 180, 60, 120, "#cfffe2"); // x, y, w, h, color280, 115, 120, 50
-var rect2 = new Rect(370, 165, 120, 50, " #EBCDE8");
-var rect3 = new Rect(470, 193, 65, 50, "#fbf7bd");
+var rect = new Rect(350, 180, 60, 120, "#cfffe2", 0.4); // x, y, w, h, color280, 115, 120, 50
+var rect2 = new Rect(370, 165, 120, 50, " #EBCDE8", 0.7);
+var rect3 = new Rect(470, 193, 65, 50, "#fbf7bd", 0.5);
+var zigzag = new Zigzag(0, 0, 10, "red");
 
 var drawArea = new Canvas("canvasID");
-drawArea.add(line, line2);
-
-drawArea.add(circle, circle2, rect, rect2, rect3);
-Zigzag();
+drawArea.add(line, line2, zigzag, circle, circle2, rect, rect2, rect3);
