@@ -32,8 +32,6 @@ let createMain = ({ head, paragraf }) => {
   main.appendChild(container);
 };
 
-//({planets}) взято из заголовка в документа (object object) !
-
 let createPlanets = ({ planets }) => {
   let blockPlanet = document.createElement("div");
   blockPlanet.innerHTML = "<h2>Galaxy Planets</h2>";
