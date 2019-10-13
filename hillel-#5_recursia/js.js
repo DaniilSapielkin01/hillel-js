@@ -86,55 +86,53 @@
 
 //---#5
 
-// var country = {
-//   name: "Ukraine",
-//   language: "ukrainian",
-//   capital: { name: "Kyiv", population: 2907817, area: 847.66 }
-// };
+var country = {
+  name: "Ukraine",
+  language: "ukrainian",
+  capital: { name: "Kyiv", population: 2907817, area: 847.66 }
+};
 
-// format.call(country, name, ""); // Ukraine
-// format.apply(country, [name, ""]); // [Ukraine]
-// format.call(country.capital, name, ""); // Kyiv
-// format.apply(country.capital, [name, ""]); // Kyiv
-// format.apply(null); // undefined ?????
+function format(start, end) {
+  console.log(start + this.name + end);
+}
+
+format.call(country, name, ""); // Ukraine
+format.apply(country, [name, ""]); // [Ukraine]
+format.call(country.capital, name, ""); // Kyiv
+format.apply(country.capital, [name, ""]); // Kyiv
+format.apply(null, ["indefined", ""]); // undefined
 
 //---#6
-// let user = {
-//   name: "John"
-// };
-// - - - 1
-// (function(start, end) {
-//  вот вариант он работает
-// this.name = user.name;
+let user = {
+  name: "John"
+};
+function format(start, end) {
+  console.log(start + this.name + end);
+}
 
-// но хотель попробовать сделать через  call / но не получается
-// name.call(user, "name");
+//---
 
-//   console.log(start + this.name + end);
-// })("<<< ", " >>>");
-// - - - 2
-// let user = {
-//   name: "John"
-// };
-// function format(start, end) {
-//   console.log(start + this.name + end);
-// }
-// var userFormat = format.bind(user);
-// userFormat("<<< ", " >>>");
+let userFunc = format.bind(user);
+userFunc("<<<", ">>>");
+
+function userFormat(a, b) {
+  format.call(user, a, b);
+}
+let nameUs = function(a, b) {
+  format.call(user, a, b);
+};
+nameUs("<<<", ">>>");
+
 //--- #7
 
-// function concat() {
-//   this.greeting = " Hello ";
-//   this.separation = " ";
+function concat(a, b, c) {
+  return console.log(a + b + c);
+}
 
-//   return function hello() {
-//     return this.greeting + this.separation + this.firstName;
-//   };
-// }
-// hello("World"); // Hello World
-// hello("John"); // Hello John
+let hello = concat.bind(null, "Hello", " ");
 
-// concat();
+hello("World"); // Hello World
+hello("John"); // Hello John
 
 //  Рекурсия
 //---#8
