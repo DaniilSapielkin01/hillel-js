@@ -1,10 +1,10 @@
 "use strict";
 
 let $searchForm = $("#search-form");
-let $bookList = $("#book-list");
-let $currentBook = $("#current-book");
-let $bookDescription = $(".book-description");
-let books = [];
+let $videoList = $("#video-list");
+// let $currentBook = $("#current-book");
+// let $bookDescription = $(".book-description");
+let video = [];
 
 let body = document.querySelector("body");
 body.style.background = " black";
@@ -15,11 +15,11 @@ $searchForm.on("submit", function(event) {
     .find('[name="search-term"]')
     .val();
 
-  getBooks(query);
+  getVideo(query);
   // console.log(query);
 });
 
-function getBooks(query) {
+function getVideo(query) {
   let server = "https://itunes.apple.com/search";
 
   $.ajax({
@@ -29,11 +29,23 @@ function getBooks(query) {
     data: `limit=10&entity=musicVideo&term=${query}`
   })
     .done(function(response) {
-      console.log(response);
+      console.log(response.results), addVideo(response.items);
     })
     .fail(function(error) {
       console.log(error);
     });
+}
+
+function addVideo(data) {
+  $videoList.empty();
+
+  data.forEach(video => {
+    $("< href = '' >")
+      .addClass("list-group-item")
+      // .text()
+      .attr("video-id", video.id) //???video.id or trakcID
+      .appendTo($videokList);
+  });
 }
 
 // function addBooks(data) {
