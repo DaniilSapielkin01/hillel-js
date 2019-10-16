@@ -14,8 +14,9 @@ $searchForm.on("submit", function(event) {
   let query = $(this)
     .find('[name="search-term"]')
     .val();
+
   getBooks(query);
-  console.log(query);
+  // console.log(query);
 });
 
 function getBooks(query) {
@@ -28,8 +29,7 @@ function getBooks(query) {
     data: `limit=10&entity=musicVideo&term=${query}`
   })
     .done(function(response) {
-      books = response.items;
-      addBooks(books);
+      console.log(response);
     })
     .fail(function(error) {
       console.log(error);
