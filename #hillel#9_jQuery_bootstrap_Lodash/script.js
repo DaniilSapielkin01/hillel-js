@@ -1,12 +1,12 @@
 "use strict";
-
 let $searchForm = $("#search-form");
-let $videoList = $("#video-list");
-// let $currentBook = $("#current-book");
-// let $bookDescription = $(".book-description");
-let video = [];
-
+let $carouselInner = $(".carousel-inner");
+let videos = [];
+let $btnSearch = $("#button-addon2");
+let $leftBtn = $(".carousel-control-prev");
+let $rigthBtn = $(".carousel-control-next ");
 let body = document.querySelector("body");
+
 body.style.background = " black";
 
 $searchForm.on("submit", function(event) {
@@ -29,69 +29,55 @@ function getVideo(query) {
     data: `limit=10&entity=musicVideo&term=${query}`
   })
     .done(function(response) {
-      console.log(response.results), addVideo(response.items);
+      videos = response.results;
+      addVideo(videos);
     })
     .fail(function(error) {
-      console.log(error);
+      console.log("error =>>>", error);
     });
 }
 
-function addVideo(data) {
-  $videoList.empty();
-
-  data.forEach(video => {
-    $("< href = '' >")
-      .addClass("list-group-item")
-      // .text()
-      .attr("video-id", video.id) //???video.id or trakcID
-      .appendTo($videokList);
-  });
-}
-
-// function addBooks(data) {
-//   $bookList.empty();
-
-//   data.forEach(book => {
-//     $("<a href=''>")
-//       .addClass("list-group-item")
-//       .text(book.volumeInfo.title)
-//       .attr("data-id", book.id)
-//       .appendTo($bookList);
-//   });
-// }
-
-// $bookList.on("click", "[data-id]", function(event) {
-//   event.preventDefault();
-
-//   let bookId = $(this).data("id");
-//   let book = books.find(item => item.id === bookId);
-
-//   $currentBook.fadeIn();
-//   $currentBook.find(".book-title").text(`${book.volumeInfo.title}
-//     | ${
-//       book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "No author"
-//     }
-//     ${book.volumeInfo.publishedDate}`);
-
-//   $bookDescription.empty();
-
-//   $("<img>")
-//     .attr("src", book.volumeInfo.imageLinks.thumbnail)
-//     .appendTo($bookDescription);
-
-//   $("<p>")
-//     .text(book.volumeInfo.description)
-//     .appendTo($bookDescription);
-
-//   $("<a>")
-//     .attr("href", book.volumeInfo.previewLink)
-//     .attr("target", "_blank")
-//     .text("Read more...")
-//     .addClass("read-link")
-//     .appendTo($bookDescription);
-// });
-
-// - - - setting carousel - - -
+//--- setting carousel---
 $(".carousel").carousel({
   interval: false
 });
+
+$leftBtn.on("click", function() {
+  $("video").trigger("pause");
+});
+
+$rigthBtn.on("click", function() {
+  $("video").trigger("pause");
+});
+
+function addVideo(data) {
+  $carouselInner.empty();
+
+  $("<div>")
+    .addClass("carousel-item d active")
+    .appendTo($carouselInner);
+
+  // первый обьект в слайдере всегда с классом "active"
+  let $firstVideo = $(".active");
+
+  $("<video>")
+    .addClass("d-block w-100")
+    .attr("src", data[0].previewUrl)
+    .attr("controls", "controls")
+    .appendTo($firstVideo);
+  //перебераем и получаем весь контент
+  for (var i = 1; i < data.length; i++) {
+    $("<div>")
+      .addClass("carousel-item")
+      .attr("id", i)
+      .appendTo($carouselInner);
+    let $allVideo = $(`#${i}`);
+    $("<video>")
+      .attr("src", data[i].previewUrl)
+      .attr("controls", "controls")
+      .appendTo($allVideo);
+  }
+  $leftBtn.removeClass("delete");
+  $rigthBtn.removeClass("delete");
+  console.log(data);
+}
